@@ -95,6 +95,15 @@ const products = [
   { id: 8, cat: "signature", ar: "كاسات سيرب كراميل", en: "Caramel Syrup Cups", descAr: "كاسات فردية بتوازن كريمة وقرمشة.", descEn: "Single cups balanced with cream and crunch.", price: 95, score: 89 }
 ];
 
+function productVisualLabel(product) {
+  if (product.id === 2) return "Pistachio";
+  if (product.id === 4) return "Molten";
+  if (product.id === 6 || product.id === 7) return "Arabic sweets";
+  if (product.cat === "konafa") return "Konafa";
+  if (product.cat === "basbosa") return "Basbosa";
+  return "Signature";
+}
+
 const liveOrders = [
   { id: "KB-20491", source: "Direct", state: "dispatch", branch: "newCairo", customerAr: "مريم حسن", customerEn: "Mariam Hassan", item: 1, eta: 12, value: 455 },
   { id: "KB-20492", source: "Direct", state: "kitchen", branch: "nasr", customerAr: "عمر عادل", customerEn: "Omar Adel", item: 6, eta: 18, value: 420 },
@@ -209,8 +218,8 @@ function routeTo(id) {
 function productCard(product) {
   return `<article class="product-card">
     <div class="product-art art-${product.id}">
-      <img src="${productImages[product.id]}" alt="${local(product.ar, product.en)}" loading="lazy" decoding="async">
-      <span class="photo-label">${product.cat === "konafa" ? "Konafa" : product.cat === "basbosa" ? "Basbosa" : product.id === 4 ? "Molten" : product.id === 2 ? "Pistachio" : product.id === 6 || product.id === 7 ? "Arabic sweets" : "Signature"}</span>
+      <img src="${productImages[product.id]}" alt="${local(product.ar, product.en)}" loading="lazy" decoding="async" sizes="(max-width: 560px) 100vw, (max-width: 1180px) 50vw, 320px">
+      <span class="photo-label">${productVisualLabel(product)}</span>
     </div>
     <h3>${local(product.ar, product.en)}</h3>
     <p>${local(product.descAr, product.descEn)}</p>

@@ -2225,3 +2225,101 @@ main { padding: clamp(14px, 1.6vw, 24px) var(--page-pad) clamp(34px, 4vw, 56px);
   .product-art { aspect-ratio: 1.68; }
   .hero-copy { max-width: 880px; }
 }
+
+/* Tracked frontend responsive polish */
+.product-card,
+.campaign-card,
+.customer-card,
+.branch-card,
+.metric {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card h3,
+.campaign-card h3,
+.customer-card h3,
+.branch-card h3 {
+  overflow-wrap: anywhere;
+}
+
+.product-card p,
+.campaign-card p {
+  flex: 1 1 auto;
+}
+
+.product-foot {
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.photo-label {
+  max-width: calc(100% - 20px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-nav,
+.top-actions,
+.filters,
+.segmented,
+.branch-command,
+.lifecycle-board,
+.delivery-heatmap,
+.responsive-table {
+  overscroll-behavior-inline: contain;
+}
+
+@media (max-width: 1240px) and (min-width: 861px) {
+  .product-wall,
+  .menu-grid,
+  .metrics,
+  .crm-grid,
+  .branch-grid,
+  .campaign-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-proof div {
+    min-height: 76px;
+  }
+}
+
+@media (max-width: 430px) {
+  .app-shell {
+    width: 100%;
+  }
+
+  .panel {
+    border-radius: 7px;
+  }
+
+  .top-actions > button {
+    min-width: 104px;
+  }
+
+  .nav-item {
+    min-width: 116px;
+    padding-inline: 10px;
+  }
+
+  .product-art {
+    aspect-ratio: 1.32;
+  }
+
+  .photo-label {
+    min-height: 28px;
+    font-size: 11px;
+  }
+
+  .hero-proof strong {
+    font-size: 24px;
+  }
+
+  .responsive-table {
+    margin-inline: calc(var(--panel-pad) * -1);
+    border-inline: 0;
+    border-radius: 0;
+  }
+}
