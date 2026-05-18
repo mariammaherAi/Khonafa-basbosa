@@ -641,6 +641,229 @@ main,
     width: min(170px, 58vw);
     height: min(170px, 58vw);
   }
+
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .view.active {
+    display: block;
+  }
+
+  .sidebar {
+    z-index: 8;
+    backdrop-filter: blur(22px);
+  }
+
+  .main-nav,
+  .top-actions,
+  .filters,
+  .segmented {
+    scrollbar-width: thin;
+  }
+
+  .nav-item {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav-item::after {
+    display: none;
+  }
+
+  .search {
+    min-height: 46px;
+    padding: 10px 14px;
+  }
+
+  .branch-switcher {
+    min-height: 46px;
+    padding: 8px 10px;
+  }
+
+  .primary,
+  .secondary,
+  .ghost,
+  .payment,
+  .filter,
+  .chip {
+    min-height: 42px;
+    line-height: 1.2;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 12px;
+  }
+
+  .hero h1,
+  .workspace-head h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  .hero p,
+  .story-card p,
+  .product-card p,
+  .campaign-card p {
+    text-wrap: pretty;
+  }
+
+  .dessert-stage {
+    max-height: 430px;
+  }
+
+  .stage-light {
+    inset: 14% -8% -12% 0;
+  }
+
+  .live-ticket small,
+  .hero-badge span {
+    line-height: 1.35;
+  }
+
+  .customer-grid,
+  .story-grid,
+  .ops-layout,
+  .integration-grid,
+  .report-grid,
+  .checkout-flow,
+  .crm-console,
+  .crm-workflows,
+  .delivery-layout,
+  .delivery-intel {
+    margin-top: var(--rf-gap);
+  }
+
+  .product-card,
+  .campaign-card,
+  .customer-card,
+  .branch-card,
+  .metric,
+  .command-card,
+  .crm-kpi,
+  .report-kpi,
+  .marketing-card,
+  .logistics-card,
+  .sales-card,
+  .health-row,
+  .segment-card,
+  .eta-card,
+  .zone-card {
+    padding: clamp(13px, 3.8vw, 16px);
+  }
+
+  .product-card,
+  .campaign-card,
+  .customer-card,
+  .branch-card {
+    gap: 8px;
+  }
+
+  .product-card h3,
+  .campaign-card h3,
+  .customer-card h3,
+  .branch-card h3 {
+    line-height: 1.18;
+  }
+
+  .product-card p {
+    min-height: 0;
+    line-height: 1.62;
+  }
+
+  .product-foot {
+    row-gap: 8px;
+  }
+
+  .product-foot strong {
+    font-size: 18px;
+  }
+
+  .add-btn {
+    min-height: 38px;
+    padding-inline: 12px;
+  }
+
+  .tag,
+  .history-pill,
+  .status-pill {
+    line-height: 1.25;
+  }
+
+  .metrics,
+  .crm-kpis,
+  .report-kpis,
+  .marketing-board,
+  .sales-overview,
+  .command-strip {
+    margin-bottom: var(--rf-gap);
+  }
+
+  .metric strong,
+  .command-card strong,
+  .crm-kpi strong,
+  .report-kpi strong,
+  .marketing-card strong,
+  .logistics-card strong,
+  .sales-card strong {
+    font-size: clamp(25px, 8vw, 32px);
+    line-height: 1.05;
+  }
+
+  .smart-filter-bar {
+    padding: 11px;
+  }
+
+  .filter-group {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+  }
+
+  .filter {
+    flex: 0 0 auto;
+  }
+
+  .chart-combo,
+  .chart {
+    width: 100%;
+  }
+
+  .donut-wrap {
+    min-height: 220px;
+  }
+
+  .donut,
+  .loyalty-ring {
+    width: min(168px, 54vw);
+    height: min(168px, 54vw);
+  }
+
+  .responsive-table {
+    overflow-x: auto;
+  }
+
+  .queue-card,
+  .driver-account,
+  .route-row,
+  .earning-row,
+  .inventory-line,
+  .profile-stat {
+    gap: 10px;
+  }
+
+  .map-toolbar {
+    gap: 6px;
+  }
+
+  .map-tool {
+    min-height: 32px;
+    padding-inline: 9px;
+    font-size: 12px;
+  }
 }
 
 /* Small phones: tighten only the pieces that still risk overflow. */
@@ -659,5 +882,163 @@ main,
 
   .top-actions > button {
     min-width: 100px;
+  }
+
+  .sidebar {
+    padding: 11px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .main-nav {
+    gap: 7px;
+  }
+
+  .nav-item {
+    min-width: 108px;
+    min-height: 38px;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .topbar {
+    gap: 8px;
+  }
+
+  .hero {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .hero h1 {
+    font-size: clamp(27px, 10.2vw, 36px);
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .dessert-stage {
+    height: clamp(290px, 88vw, 360px);
+    border-radius: 16px;
+  }
+
+  .live-ticket {
+    width: min(218px, calc(100% - 18px));
+    padding: 9px;
+  }
+
+  .hero-badge {
+    width: min(210px, calc(100% - 24px));
+    padding: 11px;
+  }
+
+  .dessert-a {
+    width: 54%;
+    height: 30%;
+    inset: 32% 10% auto auto;
+  }
+
+  .dessert-b {
+    width: 42%;
+    height: 24%;
+    inset: 53% auto auto 2%;
+  }
+
+  .dessert-c {
+    width: 35%;
+    height: 20%;
+    inset: 64% 24% auto auto;
+  }
+
+  .hero-proof div {
+    min-height: 58px;
+    padding: 12px;
+  }
+
+  .panel {
+    padding: 13px;
+  }
+
+  .workspace-head {
+    margin-top: 14px;
+  }
+
+  .workspace-head h1 {
+    font-size: clamp(24px, 7.8vw, 31px);
+  }
+
+  h2 {
+    font-size: clamp(22px, 7vw, 29px);
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .primary,
+  .secondary,
+  .ghost,
+  .payment {
+    min-height: 40px;
+    padding-inline: 11px;
+  }
+
+  .product-card,
+  .campaign-card,
+  .customer-card,
+  .branch-card,
+  .metric,
+  .command-card,
+  .crm-kpi,
+  .report-kpi,
+  .marketing-card,
+  .logistics-card,
+  .sales-card {
+    padding: 12px;
+  }
+
+  .photo-label {
+    inset-inline-start: 8px;
+    bottom: 8px;
+    max-width: calc(100% - 16px);
+  }
+
+  .metric strong,
+  .command-card strong,
+  .crm-kpi strong,
+  .report-kpi strong,
+  .marketing-card strong,
+  .logistics-card strong,
+  .sales-card strong {
+    font-size: clamp(23px, 8vw, 29px);
+  }
+
+  .chart-combo {
+    min-height: 205px;
+  }
+
+  .chart {
+    height: 195px;
+  }
+
+  .responsive-table {
+    margin-inline: -13px;
+  }
+
+  .responsive-table table,
+  .responsive-table.compact table {
+    min-width: 500px;
+  }
+
+  .map-overlay-card {
+    margin-top: clamp(230px, 66vw, 320px);
   }
 }
