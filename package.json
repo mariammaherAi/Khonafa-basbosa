@@ -1,0 +1,12 @@
+{
+  "name": "konafa-basbosa-os",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node preview-server.mjs",
+    "check": "node --check app.js",
+    "build": "node --check app.js"
+  },
+  "devDependencies": {}
+}

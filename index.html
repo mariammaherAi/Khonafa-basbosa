@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Premium Arabic RTL operational dashboard for an Egyptian dessert food-tech brand." />
+    <title>Konafa & Basbosa OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="app-loading">
+    <div class="ambient"></div>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">KB</div>
+          <div>
+            <strong data-i18n="brand">كنافة وبسبوسة</strong>
+            <span data-i18n="brandSub">نظام تشغيل الحلويات</span>
+          </div>
+        </div>
+        <nav class="main-nav" id="nav"></nav>
+        <div class="ops-card">
+          <span class="pulse"></span>
+          <p data-i18n="opsPulse">نبض التشغيل الآن</p>
+          <strong id="pulseMetric">98.4%</strong>
+          <small data-i18n="opsHint">التزام الفروع بالتحضير والتسليم</small>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div class="search">
+            <span></span>
+            <input id="searchInput" data-i18n-placeholder="search" placeholder="ابحث عن عميل، طلب، فرع..." />
+          </div>
+          <div class="branch-switcher" id="branchSwitcher"></div>
+          <div class="top-actions">
+            <button class="ghost" id="themeToggle" data-i18n="theme">الوضع الفاتح</button>
+            <button class="ghost" id="langToggle">EN</button>
+            <button class="primary" data-route="checkout" data-i18n="openCart">السلة</button>
+          </div>
+        </header>
+
+        <section class="view" id="customer">
+          <div class="hero">
+            <div class="hero-copy">
+              <p class="eyebrow" data-i18n="heroEyebrow">من الفرن إلى باب البيت في لحظة دافئة</p>
+              <h1 data-i18n="heroTitle">لحظة كنافة مصممة كأنها منتج تقني فاخر.</h1>
+              <p data-i18n="heroText">منصة طلبات عاطفية، سريعة، ومتصلة بالفروع والولاء والتوصيل، مبنية لتجعل كل طلب يبدو وكأنه عادة يومية لا تقاوم.</p>
+              <div class="hero-actions">
+                <button class="primary" data-route="menu" data-i18n="orderNow">اطلب الآن</button>
+                <button class="secondary" data-route="tracking" data-i18n="trackOrder">تتبع طلب حي</button>
+              </div>
+              <div class="hero-proof">
+                <div><strong id="heroOrders">426</strong><span id="heroOrdersLabel">طلب حي الآن</span></div>
+                <div><strong>21m</strong><span id="heroEtaLabel">متوسط الوصول</span></div>
+                <div><strong>98%</strong><span id="heroSlaLabel">التزام الفروع</span></div>
+              </div>
+            </div>
+            <div class="dessert-stage">
+              <div class="stage-light"></div>
+              <div class="steam steam-a"></div>
+              <div class="steam steam-b"></div>
+              <div class="gold-dust dust-a"></div>
+              <div class="gold-dust dust-b"></div>
+              <div class="plate"></div>
+              <div class="dessert dessert-a"></div>
+              <div class="dessert dessert-b"></div>
+              <div class="dessert dessert-c"></div>
+              <div class="syrup-line"></div>
+              <div class="hero-badge">
+                <span data-i18n="heroBadge">الأكثر طلبا</span>
+                <strong>Lotus Konafa Box</strong>
+              </div>
+              <div class="live-ticket">
+                <span class="pulse"></span>
+                <div><b>KB-20491</b><small id="heroTicketLabel">خرج للتوصيل · التجمع</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="customer-grid">
+            <article class="wide panel">
+              <div class="section-title">
+                <div>
+                  <span data-i18n="cravingLabel">قائمة مصممة للجوع</span>
+                  <h2 data-i18n="cravingTitle">اختيارات تلمع في الشاشة قبل الملعقة.</h2>
+                </div>
+                <div class="segmented" id="categoryTabs"></div>
+              </div>
+              <div class="menu-grid" id="menuGrid"></div>
+            </article>
+            <article class="panel loyalty-panel">
+              <span data-i18n="loyalty">نظام الولاء</span>
+              <h3 data-i18n="loyaltyTitle">Syrup Club Gold</h3>
+              <div class="loyalty-ring"><strong>7,840</strong><small data-i18n="points">نقطة</small></div>
+              <p data-i18n="loyaltyText">عرض شخصي: خصم 18% على باكدج التجمع عند الطلب قبل 8 مساء.</p>
+            </article>
+          </div>
+          <div class="story-grid">
+            <article class="panel story-card">
+              <span data-i18n="investorEyebrow">قصة المستثمر</span>
+              <h2 data-i18n="investorTitle">من علامة عاطفية إلى بنية تشغيل قابلة للتوسع.</h2>
+              <p data-i18n="investorText">كل شاشة تربط الرغبة بالقرار: طلب أسرع، فرع أذكى، سائق أوضح، وعميل يعود لأن التجربة تتذكره.</p>
+            </article>
+            <article class="panel unit-card" id="unitEconomics"></article>
+          </div>
+        </section>
+
+        <section class="view" id="menu">
+          <div class="workspace-head">
+            <div><span data-i18n="menuEyebrow">واجهة الطلب</span><h1 data-i18n="menuTitle">منيو ذكي بعروض وفلاتر حية</h1></div>
+            <button class="primary" data-route="checkout" data-i18n="checkout">إتمام الطلب</button>
+          </div>
+          <div class="filters" id="filters"></div>
+          <div class="split-layout">
+            <div class="product-wall" id="productWall"></div>
+            <aside class="cart panel">
+              <h3 data-i18n="cart">السلة</h3>
+              <div id="cartItems"></div>
+              <div class="cart-total"><span data-i18n="total">الإجمالي</span><strong id="cartTotal">EGP 0</strong></div>
+              <button class="primary full" data-route="checkout" data-i18n="checkout">إتمام الطلب</button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="checkout">
+          <div class="checkout-flow">
+            <div class="panel">
+              <span data-i18n="checkoutEyebrow">تجربة الدفع</span>
+              <h1 data-i18n="checkoutTitle">طلب سريع، واضح، ومطمئن</h1>
+              <div class="form-grid">
+                <label><span data-i18n="name">الاسم</span><input value="مريم حسن" /></label>
+                <label><span data-i18n="phone">الموبايل</span><input value="010 2281 7740" /></label>
+                <label class="full-field"><span data-i18n="address">العنوان</span><input value="التجمع الخامس، شارع التسعين، بجوار واتر واي" /></label>
+              </div>
+              <div class="payment-row">
+                <button class="payment active">Card</button>
+                <button class="payment">Wallet</button>
+                <button class="payment">Cash</button>
+              </div>
+            </div>
+            <div class="panel order-card">
+              <h3 data-i18n="orderSummary">ملخص الطلب</h3>
+              <div id="checkoutItems"></div>
+              <div class="cart-total"><span data-i18n="eta">وقت الوصول</span><strong>32 min</strong></div>
+              <button class="primary full" id="placeOrder" data-i18n="placeOrder">تأكيد الطلب</button>
+              <p class="success" id="orderSuccess" data-i18n="orderSuccess">تم إرسال الطلب إلى فرع التجمع.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="tracking">
+          <div class="workspace-head">
+            <div><span data-i18n="trackingEyebrow">تتبع حي</span><h1 data-i18n="trackingTitle">طلب #KB-20491 في الطريق</h1></div>
+            <div class="live-pill"><span class="pulse"></span><b data-i18n="live">مباشر</b></div>
+          </div>
+          <div class="tracking-grid">
+            <div class="map-panel panel"><div class="route-line"></div><span class="pin kitchen"></span><span class="pin driver"></span><span class="pin home"></span></div>
+            <div class="panel timeline" id="timeline"></div>
+          </div>
+        </section>
+
+        <section class="view" id="dashboard">
+          <div class="workspace-head">
+            <div><span data-i18n="adminEyebrow">لوحة القيادة</span><h1 data-i18n="adminTitle">تشغيل حي للفروع والطلبات والإيراد</h1></div>
+            <button class="secondary" data-i18n="export">تصدير التقرير</button>
+          </div>
+          <div class="smart-filter-bar" id="dashboardFilters"></div>
+          <div class="command-strip" id="commandStrip"></div>
+          <div class="metrics" id="metrics"></div>
+          <div class="sales-overview" id="salesOverview"></div>
+          <div class="ops-layout">
+            <article class="panel wide">
+              <div class="section-title"><h2 data-i18n="revenue">الإيراد والذروة</h2><span id="liveRevenue"></span></div>
+              <div class="chart-combo">
+                <div class="chart" id="revenueChart"></div>
+                <svg class="line-chart" id="revenueLine" viewBox="0 0 620 180" preserveAspectRatio="none" aria-hidden="true"></svg>
+              </div>
+            </article>
+            <article class="panel">
+              <h3 data-i18n="liveOrders">الطلبات الحية</h3>
+              <div class="order-stream" id="orderStream"></div>
+            </article>
+          </div>
+          <div class="ops-layout">
+            <article class="panel"><h3 data-i18n="productPerformance">أداء المنتجات</h3><div id="productBars"></div></article>
+            <article class="panel"><h3 data-i18n="inventory">المخزون</h3><div id="inventoryList"></div></article>
+          </div>
+          <div class="ops-layout analytics-layout">
+            <article class="panel wide">
+              <div class="section-title"><h2 id="branchHealthTitle">صحة الفروع</h2><span id="branchHealthMeta"></span></div>
+              <div class="branch-health" id="dashboardBranchHealth"></div>
+            </article>
+            <article class="panel">
+              <h3 id="channelMixTitle">مزيج القنوات</h3>
+              <div class="donut-wrap"><div class="donut" id="channelDonut"></div><div id="channelLegend"></div></div>
+            </article>
+          </div>
+          <div class="ops-layout insight-layout">
+            <article class="panel wide">
+              <div class="section-title"><h2 id="customerInsightsTitle">رؤى العملاء</h2><span id="customerInsightsMeta"></span></div>
+              <div class="customer-insights" id="customerInsights"></div>
+            </article>
+            <article class="panel">
+              <h3 id="analyticsTitle">تحليلات فورية</h3>
+              <div class="analytics-stack" id="analyticsStack"></div>
+            </article>
+          </div>
+          <div class="ops-layout table-layout">
+            <article class="panel wide">
+              <div class="section-title"><h2 id="ordersTableTitle">جدول الطلبات الحية</h2><span id="ordersTableMeta"></span></div>
+              <div class="responsive-table" id="ordersTable"></div>
+            </article>
+            <article class="panel">
+              <h3 id="inventoryTableTitle">حالة المخزون</h3>
+              <div class="responsive-table compact" id="inventoryTable"></div>
+            </article>
+          </div>
+          <div class="ops-layout heatmap-layout">
+            <article class="panel wide">
+              <div class="section-title"><h2 id="deliveryHeatTitle">خريطة ضغط التوصيل</h2><span id="deliveryHeatMeta"></span></div>
+              <div class="delivery-heatmap" id="deliveryHeatmap"></div>
+            </article>
+            <article class="panel">
+              <h3 id="opsEventsTitle">أحداث التشغيل</h3>
+              <div class="ops-events" id="opsEvents"></div>
+            </article>
+          </div>
+          <div class="ops-layout lifecycle-layout">
+            <article class="panel wide"><h3 data-i18n="lifecycleTitle">دورة حياة الطلبات</h3><div class="lifecycle-board" id="lifecycleBoard"></div></article>
+            <article class="panel"><h3 data-i18n="slaTitle">مخاطر التشغيل</h3><div id="riskPanel"></div></article>
+          </div>
+        </section>
+
+        <section class="view" id="delivery">
+          <div class="workspace-head"><div><span data-i18n="deliveryEyebrow">إدارة التوصيل</span><h1 data-i18n="deliveryTitle">Dispatch ذكي للسائقين والمناطق</h1></div><div class="live-pill"><span class="pulse"></span><b id="logisticsClock">Live logistics</b></div></div>
+          <div class="dispatch-tabs" id="dispatchTabs"></div>
+          <div class="logistics-command" id="logisticsCommand"></div>
+          <div class="delivery-layout">
+            <div class="map-panel panel logistics live-logistics-map" id="logisticsMap">
+              <div class="map-toolbar" id="mapToolbar"></div>
+              <div class="route-wave"></div>
+              <div class="route-trace trace-a"></div>
+              <div class="route-trace trace-b"></div>
+              <div class="restricted-area area-a"><span>Road work</span></div>
+              <div class="restricted-area area-b"><span>Closed block</span></div>
+              <div class="zone z1">Nasr City</div><div class="zone z2">Tagamoa</div><div class="zone z3">Maadi</div>
+              <span class="pin driver d2"></span><span class="pin driver d3"></span><span class="pin driver d4"></span>
+              <div class="map-overlay-card" id="mapOverlayCard"></div>
+            </div>
+            <div class="panel driver-accounts-panel"><div class="section-title compact-title"><h3 data-i18n="drivers">السائقون</h3><span id="driverMeta"></span></div><div id="drivers"></div></div>
+          </div>
+          <div class="delivery-intel">
+            <article class="panel wide"><div class="section-title"><h2 id="etaSystemTitle">نظام ETA</h2><span id="etaSystemMeta"></span></div><div class="eta-grid" id="etaGrid"></div></article>
+            <article class="panel"><h3 id="routeOptimizationTitle">تحسين المسارات</h3><div id="routeOptimization"></div></article>
+          </div>
+          <div class="delivery-ops">
+            <article class="panel"><h3 data-i18n="dispatchQueue">طابور التخصيص</h3><div id="dispatchQueue"></div></article>
+            <article class="panel"><h3 data-i18n="batchingTitle">التجميع الذكي</h3><div id="batchingPanel"></div></article>
+            <article class="panel"><h3 data-i18n="zoneHealth">صحة المناطق</h3><div id="zoneHealth"></div></article>
+          </div>
+          <div class="delivery-intel">
+            <article class="panel wide"><div class="section-title"><h2 id="zoneMatrixTitle">المناطق والممنوعات</h2><span id="zoneMatrixMeta"></span></div><div class="zone-matrix" id="zoneMatrix"></div></article>
+            <article class="panel"><h3 id="earningsTitle">أرباح السائقين</h3><div id="driverEarnings"></div></article>
+          </div>
+        </section>
+
+        <section class="view" id="talabat">
+          <div class="workspace-head"><div><span data-i18n="talabatEyebrow">تكامل المنصات</span><h1 data-i18n="talabatTitle">صندوق موحد لطلبات Talabat والمنصة</h1></div></div>
+          <div class="integration-grid">
+            <article class="panel api-card"><span>API</span><h3>Talabat Sync</h3><p data-i18n="talabatText">مزامنة منيو، حالة الطلب، الأسعار، وتوافر المنتجات من لوحة واحدة.</p><button class="primary" data-i18n="syncNow">مزامنة الآن</button></article>
+            <article class="panel wide"><h3 data-i18n="unifiedInbox">صندوق الطلبات الموحد</h3><div id="inbox"></div></article>
+          </div>
+        </section>
+
+        <section class="view active" id="crm">
+          <div class="workspace-head"><div><span data-i18n="crmEyebrow">ذكاء العملاء</span><h1 data-i18n="crmTitle">شرائح، ولاء، وسلوك شراء قابل للتفعيل</h1></div><button class="primary" id="crmExport">Export CRM</button></div>
+          <div class="smart-filter-bar" id="crmFilters"></div>
+          <div class="crm-kpis" id="crmKpis"></div>
+          <div class="crm-console">
+            <div class="crm-grid" id="crmGrid"></div>
+            <aside class="panel customer-detail" id="customerDetail"></aside>
+          </div>
+          <div class="crm-workflows">
+            <article class="panel wide"><div class="section-title"><h2 id="historyTitle">سجل الطلبات</h2><span id="historyMeta"></span></div><div class="responsive-table" id="orderHistory"></div></article>
+            <article class="panel"><h3 id="loyaltyTitle">نظام الولاء</h3><div id="loyaltySystem"></div></article>
+          </div>
+          <div class="crm-workflows">
+            <article class="panel wide"><div class="section-title"><h2 id="segmentTitle">التقسيم</h2><span id="segmentMeta"></span></div><div class="segment-visual" id="segmentVisual"></div></article>
+            <article class="panel"><h3 id="crmCampaignTitle">حملات مقترحة</h3><div id="crmCampaigns"></div></article>
+          </div>
+        </section>
+
+        <section class="view" id="branches">
+          <div class="workspace-head"><div><span data-i18n="branchesEyebrow">الفروع</span><h1 data-i18n="branchesTitle">مقارنة تشغيلية بين المناطق</h1></div><button class="secondary" id="branchExport">Export branches</button></div>
+          <div class="branch-command" id="branchCommand"></div>
+          <div class="panel branch-comparison-panel"><div class="section-title"><h2 id="branchCompareTitle">مقارنة الفروع</h2><span id="branchCompareMeta"></span></div><div class="branch-compare-chart" id="branchCompareChart"></div></div>
+          <div class="branch-grid" id="branchGrid"></div>
+        </section>
+
+        <section class="view" id="reports">
+          <div class="workspace-head"><div><span data-i18n="reportsEyebrow">تقارير تنفيذية</span><h1 data-i18n="reportsTitle">نمو، احتفاظ، طلب، وربحية</h1></div><button class="primary" data-i18n="downloadPdf">PDF / Excel</button></div>
+          <div class="smart-filter-bar" id="reportFilters"></div>
+          <div class="report-kpis" id="reportKpis"></div>
+          <div class="report-grid">
+            <div class="panel wide"><h3 data-i18n="areaDemand">طلب المناطق</h3><div class="heatmap" id="heatmap"></div></div>
+            <div class="panel"><h3 data-i18n="forecast">توقعات المبيعات</h3><div class="forecast"><strong id="forecast">+23%</strong><span data-i18n="nextWeek">الأسبوع القادم</span></div></div>
+            <div class="panel wide"><h3 data-i18n="retention">احتفاظ العملاء</h3><div class="retention" id="retention"></div></div>
+            <div class="panel"><h3 id="profitTitle">الربحية</h3><div id="profitChart"></div></div>
+            <div class="panel wide"><div class="section-title"><h2 id="financialTitle">التقرير المالي</h2><span id="financialMeta"></span></div><div class="responsive-table" id="financialTable"></div></div>
+          </div>
+        </section>
+
+        <section class="view" id="marketing">
+          <div class="workspace-head"><div><span data-i18n="marketingEyebrow">التسويق والولاء</span><h1 data-i18n="marketingTitle">حملات شهية مرتبطة بالسلوك</h1></div><button class="primary" id="campaignExport">Export campaigns</button></div>
+          <div class="marketing-board" id="marketingBoard"></div>
+          <div class="campaign-grid" id="campaigns"></div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js" defer></script>
+  </body>
+</html>
