@@ -1,251 +1,81 @@
-/* Mobile-only responsive refinements.
-   Desktop and laptop layouts are intentionally untouched in this file. */
+/* ============================================================
+   mobile-fix.css  –  CLEAN REWRITE
+   Strategy: styles.css owns ALL layout logic.
+   This file adds ONLY targeted mobile polish that doesn't
+   exist in styles.css, using breakpoints that don't conflict.
 
+   Breakpoint ladder used in styles.css:
+     ≥1500px  │  ≤1360px  │  ≤1240px  │  ≤1180px
+     ≤860px   │  ≤560px   │  ≤430px
+
+   This file:
+     ≤768px  → safe sub-range of ≤860px, no conflict
+     ≤430px  → same breakpoint, additive only
+   ============================================================ */
+
+/* ── 1. Prevent any horizontal scroll leaking ── */
 @media (max-width: 768px) {
   html,
   body {
-    max-width: 100%;
     overflow-x: clip;
     -webkit-text-size-adjust: 100%;
   }
+}
 
-  img,
-  svg,
-  canvas,
-  video {
-    max-width: 100%;
-  }
-
-  main,
-  .view,
-  .panel,
-  .wide,
-  .chart-combo,
-  .responsive-table {
-    min-width: 0;
-  }
-
-  main {
-    padding: clamp(12px, 4vw, 16px);
-  }
-
+/* ── 2. Sidebar: sticky mobile header ── */
+@media (max-width: 768px) {
   .sidebar {
+    /* styles.css already does flex-row at ≤1180px.
+       We only add sticky + z-index for the mobile header. */
     position: sticky;
     top: 0;
     z-index: 8;
-    height: auto;
-    max-height: none;
-    padding: clamp(11px, 3.8vw, 15px);
-    border-inline-end: 0;
-    border-bottom: 1px solid var(--line);
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: clamp(9px, 3vw, 14px);
-    backdrop-filter: blur(22px);
   }
 
-  .brand {
-    flex: 1 1 100%;
-    gap: 10px;
-  }
+  .brand { flex: 1 1 100%; }
+}
 
-  .brand-mark {
-    width: 40px;
-    height: 40px;
-  }
-
-  .brand strong {
-    font-size: clamp(15px, 4.4vw, 18px);
-  }
-
-  .brand span {
-    font-size: 11px;
-  }
-
-  .ops-card {
-    display: none;
-  }
-
+/* ── 3. Nav scrolling strip ── */
+@media (max-width: 768px) {
   .main-nav {
-    flex: 1 1 100%;
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 0 0 8px;
     scroll-snap-type: x proximity;
-    overscroll-behavior-inline: contain;
     scrollbar-width: thin;
   }
 
   .nav-item {
-    flex: 0 0 auto;
     justify-content: center;
-    min-width: clamp(108px, 32vw, 132px);
-    min-height: 39px;
-    padding: 8px 10px;
-    text-align: center;
     white-space: nowrap;
     scroll-snap-align: start;
+    /* Hide the active dot indicator — no room on mobile */
   }
 
-  .nav-item::after {
-    display: none;
-  }
+  .nav-item::after { display: none; }
+}
 
-  .topbar {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 9px;
-    padding: 10px 0 14px;
-  }
-
-  .search,
-  .branch-switcher {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
-    min-height: 46px;
-    border-radius: 18px;
-  }
-
-  .search {
-    padding: 10px 14px;
-  }
-
-  .branch-switcher {
-    padding: 8px 10px;
-  }
-
-  .top-actions {
-    display: flex;
-    width: 100%;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 3px;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: thin;
-  }
-
+/* ── 4. Top-actions: let buttons flex-grow evenly ── */
+@media (max-width: 768px) {
   .top-actions > button {
     flex: 1 0 max-content;
     min-width: 100px;
   }
+}
 
-  .primary,
-  .secondary,
-  .ghost,
-  .payment,
-  .filter,
-  .chip {
-    min-height: 42px;
-    line-height: 1.2;
-  }
-
-  .hero,
-  .customer-grid,
-  .story-grid,
-  .ops-layout,
-  .integration-grid,
-  .report-grid,
-  .split-layout,
-  .delivery-layout,
-  .tracking-grid,
-  .checkout-flow,
-  .crm-console,
-  .delivery-intel,
-  .crm-workflows {
-    grid-template-columns: 1fr;
-    gap: clamp(10px, 3vw, 15px);
-  }
-
-  .hero {
-    min-height: auto;
-    padding: clamp(14px, 5vw, 22px);
-    gap: 14px;
-    border-radius: 16px;
-  }
-
-  .dessert-stage {
-    order: -1;
-    width: min(100%, 680px);
-    height: clamp(290px, 88vw, 420px);
-    min-height: 0;
-    margin: 0 auto;
-    border-radius: 18px;
-  }
-
-  .stage-light {
-    inset: 14% -8% -12% 0;
-  }
-
-  .hero-copy {
-    display: grid;
-    gap: 12px;
-  }
-
-  .hero h1 {
-    font-size: clamp(27px, 9.8vw, 42px);
-    line-height: 1.08;
-  }
-
-  .hero p {
-    font-size: clamp(14px, 4vw, 16px);
-    line-height: 1.72;
-  }
-
-  .hero .eyebrow {
-    max-width: 100%;
-    white-space: normal;
-  }
-
-  .hero h1,
-  .workspace-head h1,
-  h2,
-  h3 {
-    text-wrap: balance;
-  }
-
-  .hero p,
-  .story-card p,
-  .product-card p,
-  .campaign-card p {
-    text-wrap: pretty;
-  }
-
-  .hero-actions {
-    gap: 10px;
-  }
-
-  .hero-actions .primary,
-  .hero-actions .secondary {
+/* ── 5. Filter bar: let filter chips scroll horizontally ── */
+@media (max-width: 768px) {
+  .filter-group {
     width: 100%;
-    min-height: 48px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+    overscroll-behavior-inline: contain;
   }
 
-  .hero-proof,
-  .menu-grid,
-  .product-wall,
-  .metrics,
-  .crm-grid,
-  .branch-grid,
-  .campaign-grid,
-  .command-strip,
-  .delivery-ops,
-  .logistics-command,
-  .crm-kpis,
-  .report-kpis,
-  .marketing-board,
-  .segment-visual,
-  .branch-health,
-  .customer-insights,
-  .eta-grid,
-  .zone-matrix,
-  .form-grid {
-    grid-template-columns: 1fr;
-    gap: clamp(10px, 3vw, 15px);
-  }
+  .filter { flex: 0 0 auto; }
+}
 
+/* ── 6. Hero proof: horizontal layout inside each card ── */
+@media (max-width: 768px) {
   .hero-proof div {
     min-height: 60px;
     display: flex;
@@ -255,490 +85,55 @@
     padding: 12px;
   }
 
-  .hero-proof strong {
-    font-size: clamp(23px, 7vw, 30px);
-  }
-
   .hero-proof span {
     margin-top: 0;
     text-align: end;
   }
+}
 
-  .live-ticket {
-    top: 10px;
-    inset-inline-end: 10px;
-    width: min(230px, calc(100% - 20px));
-    padding: 10px;
-  }
-
-  .live-ticket small,
-  .hero-badge span {
-    line-height: 1.35;
-  }
-
-  .hero-badge {
-    width: min(220px, calc(100% - 28px));
-    inset-inline-start: 14px;
-    bottom: 14px;
-    padding: 12px;
-  }
-
-  .dessert-a {
-    width: 53%;
-    height: 31%;
-    inset: 32% 11% auto auto;
-  }
-
-  .dessert-b {
-    width: 41%;
-    height: 25%;
-    inset: 52% auto auto 3%;
-  }
-
-  .dessert-c {
-    width: 35%;
-    height: 20%;
-    inset: 64% 24% auto auto;
-  }
-
-  .panel {
-    padding: clamp(13px, 3.8vw, 17px);
-  }
-
-  .section-title,
-  .workspace-head,
-  .smart-filter-bar {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .workspace-head {
-    margin: 16px 0 14px;
-  }
-
-  .workspace-head h1 {
-    font-size: clamp(24px, 7.4vw, 34px);
-    line-height: 1.12;
-  }
-
-  h2 {
-    font-size: clamp(22px, 6.6vw, 31px);
-  }
-
-  h3 {
-    font-size: clamp(18px, 4.8vw, 21px);
-  }
-
-  .customer-grid,
-  .story-grid,
-  .ops-layout,
-  .integration-grid,
-  .report-grid,
-  .checkout-flow,
-  .crm-console,
-  .crm-workflows,
-  .delivery-layout,
-  .delivery-intel {
-    margin-top: clamp(10px, 3vw, 15px);
-  }
-
-  .product-card,
-  .campaign-card,
-  .customer-card,
-  .branch-card,
-  .metric,
-  .command-card,
-  .crm-kpi,
-  .report-kpi,
-  .marketing-card,
-  .logistics-card,
-  .sales-card,
-  .health-row,
-  .segment-card,
-  .eta-card,
-  .zone-card {
-    min-height: auto;
-    padding: clamp(12px, 3.8vw, 16px);
-  }
-
-  .product-card,
-  .campaign-card,
-  .customer-card,
-  .branch-card {
-    gap: 8px;
-  }
-
-  .product-card h3,
-  .campaign-card h3,
-  .customer-card h3,
-  .branch-card h3 {
-    line-height: 1.18;
-    overflow-wrap: anywhere;
-  }
-
-  .product-card p {
-    min-height: 0;
-    line-height: 1.62;
-  }
-
-  .product-art {
-    height: auto;
-    aspect-ratio: 1.35;
-  }
-
-  .product-foot {
-    row-gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .product-foot strong {
-    font-size: 18px;
-  }
-
-  .add-btn {
-    min-height: 38px;
-    padding-inline: 12px;
-  }
-
-  .photo-label {
-    max-width: calc(100% - 18px);
-    min-height: 28px;
-    inset-inline-start: 9px;
-    bottom: 9px;
-    font-size: 11px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .tag,
-  .history-pill,
-  .status-pill {
-    line-height: 1.25;
-  }
-
-  .metrics,
-  .crm-kpis,
-  .report-kpis,
-  .marketing-board,
-  .sales-overview,
-  .command-strip {
-    margin-bottom: clamp(10px, 3vw, 15px);
-  }
-
-  .metric strong,
-  .command-card strong,
-  .crm-kpi strong,
-  .report-kpi strong,
-  .marketing-card strong,
-  .logistics-card strong,
-  .sales-card strong {
-    font-size: clamp(24px, 8vw, 31px);
-    line-height: 1.05;
-  }
-
-  .smart-filter-bar {
-    padding: 11px;
-  }
-
-  .filter-group {
-    width: 100%;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 2px;
-    scrollbar-width: thin;
-  }
-
-  .filter {
-    flex: 0 0 auto;
-  }
-
-  .chart,
-  .chart-combo {
-    width: 100%;
-  }
-
-  .chart {
-    height: clamp(195px, 56vw, 235px);
-    gap: 4px;
-  }
-
-  .chart-combo {
-    min-height: clamp(210px, 60vw, 255px);
-  }
-
-  .bar {
-    min-width: 5px;
-  }
-
-  .line-chart path {
-    stroke-width: 2.75;
-  }
-
-  .donut-wrap {
-    min-height: 220px;
-  }
-
-  .donut,
-  .loyalty-ring {
-    width: min(168px, 54vw);
-    height: min(168px, 54vw);
-  }
-
+/* ── 7. Responsive table: full bleed on mobile ── */
+@media (max-width: 768px) {
   .responsive-table {
-    max-width: 100%;
+    /* Panels have clamp padding. Pull table edge-to-edge. */
     margin-inline: calc(clamp(13px, 3.8vw, 17px) * -1);
     border-inline: 0;
     border-radius: 0;
-    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-  }
-
-  .responsive-table table,
-  .responsive-table.compact table {
-    min-width: 520px;
   }
 
   .responsive-table th,
   .responsive-table td {
-    min-width: 90px;
-    padding: 10px 9px;
     white-space: normal;
-    font-size: 12px;
+    min-width: 88px;
   }
+}
 
-  .branch-command,
-  .lifecycle-board,
-  .delivery-heatmap,
-  .filters,
-  .segmented {
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-  }
-
-  .branch-command {
-    grid-template-columns: repeat(6, minmax(150px, 1fr));
-  }
-
-  .lifecycle-board {
-    grid-template-columns: repeat(5, minmax(170px, 1fr));
-  }
-
-  .delivery-heatmap {
-    grid-template-columns: repeat(6, 118px);
-  }
-
-  .queue-card,
-  .driver-account,
-  .route-row,
-  .earning-row,
-  .inventory-line,
-  .profile-stat {
-    gap: 10px;
-  }
-
-  .map-panel {
-    min-height: clamp(310px, 76vw, 390px);
-  }
-
-  .live-logistics-map {
-    min-height: clamp(390px, 90vw, 470px);
-  }
-
+/* ── 8. Map overlay card: pull below the map on small screens ── */
+@media (max-width: 768px) {
   .map-overlay-card {
     position: relative;
     inset: auto;
     width: 100%;
     margin-top: clamp(240px, 66vw, 340px);
   }
+}
 
-  .map-toolbar {
-    max-width: calc(100% - 28px);
-    gap: 6px;
-  }
-
-  .map-tool {
-    min-height: 32px;
-    padding-inline: 9px;
-    font-size: 12px;
-  }
-
-  .compare-row {
-    grid-template-columns: 1fr;
-  }
-
-  .forecast {
-    min-height: 176px;
-  }
-
-  .forecast strong {
-    font-size: clamp(44px, 14vw, 56px);
-  }
-
-  .profit-ring {
-    width: min(166px, 58vw);
-    height: min(166px, 58vw);
+/* ── 9. Overscroll containment on horizontal scrollers ── */
+@media (max-width: 768px) {
+  .main-nav,
+  .top-actions,
+  .branch-command,
+  .lifecycle-board,
+  .delivery-heatmap,
+  .filters,
+  .segmented {
+    overscroll-behavior-inline: contain;
   }
 }
 
+/* ── 10. Very small phones (≤430px): edge-to-edge table ── */
 @media (max-width: 430px) {
-  main {
-    padding-inline: 12px;
-  }
-
-  .sidebar {
-    padding: 11px;
-  }
-
-  .brand-mark {
-    width: 38px;
-    height: 38px;
-  }
-
-  .main-nav {
-    gap: 7px;
-  }
-
-  .nav-item {
-    min-width: 108px;
-    min-height: 38px;
-    padding: 8px 10px;
-    font-size: 13px;
-  }
-
-  .topbar {
-    gap: 8px;
-  }
-
-  .primary,
-  .secondary,
-  .ghost,
-  .payment {
-    min-height: 40px;
-    padding-inline: 11px;
-  }
-
-  .hero {
-    padding: 14px;
-    gap: 12px;
-  }
-
-  .hero h1 {
-    font-size: clamp(27px, 10.2vw, 36px);
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-
-  .dessert-stage {
-    height: clamp(285px, 88vw, 360px);
-    border-radius: 16px;
-  }
-
-  .live-ticket {
-    width: min(218px, calc(100% - 18px));
-    padding: 9px;
-  }
-
-  .hero-badge {
-    width: min(210px, calc(100% - 24px));
-    padding: 11px;
-  }
-
-  .dessert-a {
-    width: 54%;
-    height: 30%;
-    inset: 32% 10% auto auto;
-  }
-
-  .dessert-b {
-    width: 42%;
-    height: 24%;
-    inset: 53% auto auto 2%;
-  }
-
-  .dessert-c {
-    width: 35%;
-    height: 20%;
-    inset: 64% 24% auto auto;
-  }
-
-  .hero-proof div {
-    min-height: 58px;
-    padding: 12px;
-  }
-
-  .panel,
-  .product-card,
-  .campaign-card,
-  .customer-card,
-  .branch-card,
-  .metric,
-  .command-card,
-  .crm-kpi,
-  .report-kpi,
-  .marketing-card,
-  .logistics-card,
-  .sales-card {
-    padding: 12px;
-  }
-
-  .workspace-head {
-    margin-top: 14px;
-  }
-
-  .workspace-head h1 {
-    font-size: clamp(24px, 7.8vw, 31px);
-  }
-
-  h2 {
-    font-size: clamp(22px, 7vw, 29px);
-  }
-
-  h3 {
-    font-size: 18px;
-  }
-
-  .product-art {
-    aspect-ratio: 1.3;
-  }
-
-  .photo-label {
-    inset-inline-start: 8px;
-    bottom: 8px;
-    max-width: calc(100% - 16px);
-  }
-
-  .metric strong,
-  .command-card strong,
-  .crm-kpi strong,
-  .report-kpi strong,
-  .marketing-card strong,
-  .logistics-card strong,
-  .sales-card strong {
-    font-size: clamp(23px, 8vw, 29px);
-  }
-
-  .chart-combo {
-    min-height: 205px;
-  }
-
-  .chart {
-    height: 195px;
-  }
-
   .responsive-table {
     margin-inline: -12px;
-  }
-
-  .responsive-table table,
-  .responsive-table.compact table {
-    min-width: 500px;
-  }
-
-  .map-overlay-card {
-    margin-top: clamp(225px, 66vw, 315px);
   }
 }
